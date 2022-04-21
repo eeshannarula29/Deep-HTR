@@ -1,0 +1,7 @@
+*.pt
+*.png
+*.jpg
+/IAM
+/log_ft**
+/Word Detector Bkp/data/test/Cropped
+output.txt
