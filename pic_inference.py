@@ -145,9 +145,10 @@ def clean_word(word):
 
 
 def main():
-    segment()
+    # segment()
 
-    words = 'Word Detector Bkp/data/test/Cropped'
+    # words = 'Word Detector Bkp/data/test/Cropped'
+    words = 'lines'
     paths = []
 
     # model_path = 'trocr-base-handwritten.pt'
