@@ -7,6 +7,7 @@ from fairseq import utils
 from fairseq_cli import generate
 from PIL import Image
 import torchvision.transforms as transforms
+from line_segment import segment
 
 
 ############################################
@@ -91,7 +92,7 @@ def read_word_trocr(path, model, cfg, generator, bpe, img_transform):
     print(cleaned_text)
     return cleaned_text
 
-def segment():
+def segment_old():
     parser = argparse.ArgumentParser()
     parser.add_argument('--device', choices=['cpu', 'cuda'], default='cpu')
     args = parser.parse_args()
@@ -144,8 +145,9 @@ def clean_word(word):
     return word
 
 
+
 def main():
-    # segment()
+    segment('cvl.jpg')
 
     # words = 'Word Detector Bkp/data/test/Cropped'
     words = 'lines'

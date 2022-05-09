@@ -20,17 +20,6 @@ def showImg(img, cmap=None):
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
     plt.show()
 
-# read image, prepare it by resizing it to fixed height and converting it to grayscale
-#Change this here
-img_path = 'ezgif-5-2c1efff8b5.jpg'
-img1 = cv2.imread(img_path)
-# showImg(img1, cmap='gray')
-img2 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-print(img2.shape)
-img3 = np.transpose(img2)
-# showImg(img3, cmap='gray')
-img = np.arange(16).reshape((4,4))
-
 def createKernel(kernelSize, sigma, theta):
     "create anisotropic filter kernel according to given parameters"
     assert kernelSize % 2 # must be odd size
@@ -54,11 +43,6 @@ def createKernel(kernelSize, sigma, theta):
     kernel = kernel / np.sum(kernel)
     return kernel
 
-kernelSize=9
-sigma=4
-theta=1.5
-imgFiltered1 = cv2.filter2D(img3, -1, createKernel(kernelSize, sigma, theta), borderType=cv2.BORDER_REPLICATE)
-# showImg(imgFiltered1, cmap='gray')
 
 def applySummFunctin(img):
     res = np.sum(img, axis = 0)    #  summ elements in columns
@@ -71,11 +55,7 @@ def normalize(img):
     img = img - m
     img = img / s if s>0 else img
     return img
-img4 = normalize(imgFiltered1)
-(m, s) = cv2.meanStdDev(imgFiltered1)
-summ = applySummFunctin(img4)
-print(summ.ndim)
-print(summ.shape)
+
 
 def smooth(x, window_len=11, window='hanning'):
 #     if x.ndim != 1:
@@ -95,18 +75,6 @@ def smooth(x, window_len=11, window='hanning'):
 
     y = np.convolve(w/w.sum(),s,mode='valid')
     return y
-
-windows=['flat', 'hanning', 'hamming', 'bartlett', 'blackman']
-smoothed = smooth(summ, 35)
-# plt.plot(smoothed)
-# plt.show()
-
-from scipy.signal import argrelmin
-mins = argrelmin(smoothed, order=2)
-arr_mins = np.array(mins)
-# plt.plot(smoothed)
-# plt.plot(arr_mins, smoothed[arr_mins], "x")
-# plt.show()
 
 
 def crop_text_to_lines(text, blanks):
@@ -146,15 +114,6 @@ def display_lines(lines_arr, orient='vertical'):
                 plt.savefig(f"lines/line{i}.png", cmap='gray', interpolation = 'bicubic')
     # plt.show()
 
-found_lines = crop_text_to_lines(img3, arr_mins[0])
-sess = tf.Session()
-found_lines_arr = []
-with sess.as_default():
-    for i in range(len(found_lines)-1):
-        found_lines_arr.append(tf.expand_dims(found_lines[i], -1).eval())
-
-display_lines(found_lines)
-
 
 def transpose_lines(lines):
     res = []
@@ -163,5 +122,50 @@ def transpose_lines(lines):
         res.append(line)
     return res
 
-res_lines = transpose_lines(found_lines)
-display_lines(res_lines, 'horizontal')
+
+def segment(img_path):
+    # read image, prepare it by resizing it to fixed height and converting it to grayscale
+    img1 = cv2.imread(img_path)
+    # showImg(img1, cmap='gray')
+    img2 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+    print(img2.shape)
+    img3 = np.transpose(img2)
+    # showImg(img3, cmap='gray')
+    img = np.arange(16).reshape((4, 4))
+
+    kernelSize = 9
+    sigma = 4
+    theta = 1.5
+    imgFiltered1 = cv2.filter2D(img3, -1, createKernel(kernelSize, sigma, theta), borderType=cv2.BORDER_REPLICATE)
+    # showImg(imgFiltered1, cmap='gray')
+
+    img4 = normalize(imgFiltered1)
+    (m, s) = cv2.meanStdDev(imgFiltered1)
+    summ = applySummFunctin(img4)
+    print(summ.ndim)
+    print(summ.shape)
+
+    windows = ['flat', 'hanning', 'hamming', 'bartlett', 'blackman']
+    smoothed = smooth(summ, 35)
+    # plt.plot(smoothed)
+    # plt.show()
+
+    from scipy.signal import argrelmin
+    mins = argrelmin(smoothed, order=2)
+    arr_mins = np.array(mins)
+    # plt.plot(smoothed)
+    # plt.plot(arr_mins, smoothed[arr_mins], "x")
+    # plt.show()
+
+    found_lines = crop_text_to_lines(img3, arr_mins[0])
+    sess = tf.Session()
+    found_lines_arr = []
+    with sess.as_default():
+        for i in range(len(found_lines) - 1):
+            found_lines_arr.append(tf.expand_dims(found_lines[i], -1).eval())
+
+    display_lines(found_lines)
+    res_lines = transpose_lines(found_lines)
+    display_lines(res_lines, 'horizontal')
+
+segment('cvl.jpg')
