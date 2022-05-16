@@ -11,6 +11,8 @@ warnings.filterwarnings('ignore')
 import seaborn as sns
 import matplotlib.pyplot as plt
 import warnings
+
+
 warnings.simplefilter('ignore')
 sns.set(rc={'figure.figsize' : (22, 10)})
 sns.set_style("darkgrid", {'axes.grid' : True})
@@ -124,6 +126,11 @@ def transpose_lines(lines):
 
 
 def segment(img_path):
+    try:
+        os.mkdir('./lines')
+    except FileExistsError:
+        pass
+
     # read image, prepare it by resizing it to fixed height and converting it to grayscale
     img1 = cv2.imread(img_path)
     # showImg(img1, cmap='gray')
