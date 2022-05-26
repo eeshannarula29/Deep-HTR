@@ -174,5 +174,3 @@ def segment(img_path):
     display_lines(found_lines)
     res_lines = transpose_lines(found_lines)
     display_lines(res_lines, 'horizontal')
-
-segment('cvl.jpg')

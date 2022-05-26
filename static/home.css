@@ -1,0 +1,43 @@
+.begin{
+  margin-left: 45px;
+}
+
+.nav-item{
+  margin-top:5px;
+}
+
+.nav-link{
+  font-size:20px;
+}
+
+.bigger-size{
+  font-size:30px;
+}
+
+.nav-link{
+  color:white;
+}
+
+.reset-margin{
+  margin-left:-30px;
+}
+
+.col{
+  margin-right:0px;
+}
+
+
+a:link.unique,a:visited.unique{
+  color:black;
+  text-decoration: none;
+}
+
+a:link.sean{
+  color:blue;
+}
+
+a:visited.sean{
+  color:blue;
+}
+
+a:hover.unique{text-decoration: none;color:white;}

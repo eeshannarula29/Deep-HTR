@@ -1,0 +1,15 @@
+header .begin{
+  margin-left: 30px;
+}
+
+.nav-item{
+  margin-top:5px;
+}
+
+.nav-link{
+  font-size:20px;
+}
+
+.bigger-size{
+  font-size:30px;
+}

@@ -1,0 +1,83 @@
+.main_component{
+  margin:50px;
+}
+
+.bigger-size{
+  font-size: 25px;
+}
+
+#about_div{
+  margin:50px;margin-top:30px;
+}
+#about_div h1{
+  margin-bottom:25px;
+}
+
+.begin{
+  margin-left: 30px;
+  margin-top: 0px;
+}
+
+.nav-item{
+  margin-top:5px;
+}
+
+.nav-link{
+  font-size:20px;
+}
+
+.bigger-size{
+  font-size:30px;
+}
+
+#intro_div{background-color: #63e5ff;display:inline-flex;border-radius:50px;}
+#second_about_div{background-color: #8aecff;display:inline-flex;border-radius:50px;}
+#third_about_div{background-color: #b1f2ff;display: inline-flex;border-radius:50px;}
+
+#intro_test_div{
+  overflow:hidden;
+  margin:30px;margin-right:40px;margin-left:15px;
+  font-size:28.5px
+}
+
+#logo_div{
+  display:inline-block;
+  float:left;
+  margin:30px;
+}
+
+#motivation_div{
+  display:inline-block;
+  float:left;
+  margin:30px;margin-left:50px;
+  font-size:29px;
+}
+
+#mosaic_div{
+  display:inline-block;
+  margin:30px;
+}
+
+#network_div{
+  overflow:hidden;
+  margin:30px;margin-right:40px;margin-left:15px;
+  font-size:28.5px;
+}
+
+#pipeline_div{
+  display:inline-block;
+  float:left;
+  margin:30px;margin-top:50px;
+}
+
+.pic{
+  height:300px;
+}
+
+.begin{
+  margin-left: 30px;
+}
+
+img{
+  border-radius:25px;
+}
