@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        />
+        <link
+            href="{{ url_for('static', filename='about.css') }}"
+            rel="stylesheet"
+        />
+        <link
+            href="{{ url_for('static', filename='common.css')}}"
+            rel="stylesheet"
+        />
+        <title>About Handwriting Recognition</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3">
+            <a class="navbar-brand bigger-size begin" href="/"
+                >Handwriting Recognition</a
+            >
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/about"> About </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/app"> Try it Out! </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="about_div">
+            <h1>What is Handwriting Recognition?</h1>
+            <div id="intro_div">
+                <div id="logo_div">
+                    <img
+                        src="{{ url_for('static', filename='about.png')}}"
+                        class="pic"
+                    />
+                </div>
+                <div id="intro_test_div">
+                    <p>
+                        DeepHTR is a machine learning project which outputs the
+                        text from a scanned handwritten document. DeepHTR works
+                        by combining a line segmentation algorithm to separate
+                        documents into individual lines, and then passing these
+                        lines into a transformer based neural classifier.
+                    </p>
+                    <p>
+                        Using state of the art neural networks, users can simply
+                        upload a picture of a scanned handwritten document, and
+                        then receive the text from that document.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
