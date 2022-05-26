@@ -16,3 +16,5 @@ fastwer
 tensorflow==1.15
 sklearn
 seaborn
+flask
+flask_bootstrap
