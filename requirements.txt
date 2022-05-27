@@ -1,6 +1,7 @@
 -f https://download.pytorch.org/whl/torch_stable.html
 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu110/torch1.7/index.html
 
+pybind11
 torch==1.11.0
 torchvision==0.12.0
 path
