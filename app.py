@@ -10,6 +10,9 @@ matplotlib.use('Agg')
 
 from pic_inference import *
 
+# from smart_open import open as smart_open
+# import io
+
 UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
 DOWNLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/downloads/'
 ALLOWED_EXTENSIONS = {'pdf', 'txt'}
@@ -26,6 +29,23 @@ app.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+def download_model():
+    print("downloading model")
+    import boto3
+    import configparser
+
+    config = configparser.ConfigParser()
+    config.read('params.env')
+    access_key = config['aws']['AccessKeyId']
+    secret_key = config['aws']['SecretKey']
+
+    s3_client = boto3.client('s3',
+                             aws_access_key_id=access_key,
+                             aws_secret_access_key=secret_key,
+                             region_name='us-east-2'
+                             )
+    s3_client.download_file('utmist-ml-bucket', 'trocr-small-handwritten-best.pt', './models/trocr-small-handwritten-best.pt')
+
 
 @app.route('/about')
 def about():
@@ -41,8 +61,9 @@ def index():
 def main():
     print(request.form)
     cont = None
-    postal_codes = []
     if request.method == 'POST':
+        # if not os.path.exists("trocr-small-handwritten-best.pt"):
+        #     download_model()
         stat_info = request.form.to_dict()
 
         if 'doc' not in request.files:
@@ -66,7 +87,8 @@ def main():
         words = 'lines'
         paths = []
 
-        model_path = './models/trocr-handwritten-best.pt'
+       # model_path = './models/trocr-handwritten-best.pt' #need to change this once s3 integration works
+        model_path = './models/trocr-small-handwritten-best.pt'  # need to change this once s3 integration works
 
         beam = 5
         model, cfg, task, generator, bpe, img_transform, device = init(model_path, beam)

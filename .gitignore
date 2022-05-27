@@ -5,5 +5,7 @@
 /Word Detector Bkp/doc/
 output.txt
 /.idea
-/__pycache__
+/__pycache__/**
 /lines/**
+/test_set/**
+/plot.py

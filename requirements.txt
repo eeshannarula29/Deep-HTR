@@ -18,3 +18,5 @@ sklearn
 seaborn
 flask
 flask_bootstrap
+boto3
+smart_open

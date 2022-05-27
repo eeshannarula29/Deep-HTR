@@ -30,7 +30,7 @@
   font-size:30px;
 }
 
-#intro_div{background-color: #63e5ff;display:inline-flex;border-radius:50px;}
+#intro_div{background-color: #c32148;display:inline-flex;border-radius:50px; color: white}
 #second_about_div{background-color: #8aecff;display:inline-flex;border-radius:50px;}
 #third_about_div{background-color: #b1f2ff;display: inline-flex;border-radius:50px;}
 

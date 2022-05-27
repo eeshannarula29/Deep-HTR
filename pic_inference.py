@@ -28,6 +28,8 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
+
+
 def init(model_path, beam=5):
     global device
     global task_obj
@@ -87,10 +89,11 @@ def read_word_trocr(path, model, cfg, generator, bpe, img_transform):
 
     sample = preprocess(path, img_transform)
     text = get_text(cfg, generator, model, sample, bpe)
-    cleaned_text = clean_word(text)
+    # cleaned_text = clean_word(text)
     print(text)
-    print(cleaned_text)
-    return cleaned_text
+    # print(cleaned_text)
+    # return cleaned_text
+    return text
 
 def segment_old():
     parser = argparse.ArgumentParser()
@@ -145,15 +148,14 @@ def clean_word(word):
     return word
 
 
-
 def main():
-    segment('cvl.jpg')
+    # segment('cvl.jpg')
 
-    # words = 'Word Detector Bkp/data/test/Cropped'
     words = 'lines'
     paths = []
 
     # model_path = 'trocr-base-handwritten.pt'
+    # model_path = "s3://utmist-ml-bucket/trocr-small-handwritten-best.pt"
     model_path = 'trocr-small-handwritten.pt'
     beam = 5
     model, cfg, task, generator, bpe, img_transform, device = init(model_path, beam)
@@ -170,10 +172,9 @@ def main():
         content.append(read_word_trocr(path, model, cfg, generator, bpe, img_transform))
 
     with open("output.txt", "w") as f:
-        f.write(" ".join(content))
+        f.write("; ".join(content))
     # print(" ".join(content))
 
 
 if __name__ == '__main__':
     main()
-
