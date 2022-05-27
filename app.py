@@ -88,7 +88,7 @@ def main():
         paths = []
 
        # model_path = './models/trocr-handwritten-best.pt' #need to change this once s3 integration works
-        model_path = './models/trocr-small-handwritten-best.pt'  # need to change this once s3 integration works
+        model_path = 'trocr-small-handwritten-best.pt'  # need to change this once s3 integration works
 
         beam = 5
         model, cfg, task, generator, bpe, img_transform, device = init(model_path, beam)
