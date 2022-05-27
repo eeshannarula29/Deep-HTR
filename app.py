@@ -62,8 +62,8 @@ def main():
     print(request.form)
     cont = None
     if request.method == 'POST':
-        # if not os.path.exists("trocr-small-handwritten-best.pt"):
-        #     download_model()
+        if not os.path.exists("trocr-small-handwritten-best.pt"):
+            download_model()
         stat_info = request.form.to_dict()
 
         if 'doc' not in request.files:
