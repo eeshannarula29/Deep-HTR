@@ -87,7 +87,7 @@ def main():
         words = 'lines'
         paths = []
 
-       # model_path = './models/trocr-handwritten-best.pt' #need to change this once s3 integration works
+        # model_path = './models/trocr-handwritten-best.pt' #need to change this once s3 integration works
         model_path = 'trocr-small-handwritten-best.pt'  # need to change this once s3 integration works
 
         beam = 5
