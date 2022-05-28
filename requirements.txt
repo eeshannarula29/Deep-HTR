@@ -2,7 +2,7 @@
 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu110/torch1.7/index.html
 
 torch==1.11.0
-torchvision-cpu==0.12.0
+torchvision-cpu
 path
 opencv-python
 git+https://github.com/pytorch/fairseq.git
