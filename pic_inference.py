@@ -149,7 +149,7 @@ def clean_word(word):
 
 
 def main():
-    # segment('cvl.jpg')
+    # segment('static/cvl.jpg')
 
     words = 'lines'
     paths = []
