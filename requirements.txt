@@ -2,7 +2,7 @@
 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu110/torch1.7/index.html
 
 torch==1.11.0
-torchvision==0.12.0
+torchvision-cpu==0.12.0
 path
 opencv-python
 git+https://github.com/pytorch/fairseq.git
@@ -11,10 +11,9 @@ timm==0.4.5
 h5py
 sentencepiece
 scipy==1.3.1
-tensorflow==1.15
+tensorflow-cpu==1.15
 sklearn
 seaborn
 flask
 flask_bootstrap
 boto3
-smart_open
