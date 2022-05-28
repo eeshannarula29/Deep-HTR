@@ -13,12 +13,10 @@ from line_segment import segment
 ############################################
 import argparse
 
-from path import Path
 import numpy as np
 import os
 
 from dataloader import DataLoaderImgFile
-from eval import evaluate
 from net import WordDetectorNet
 # from visualization import visualize_and_plot
 from seg_model import *
@@ -149,7 +147,7 @@ def clean_word(word):
 
 
 def main():
-    # segment('static/cvl.jpg')
+    segment('static/cvl.jpg')
 
     words = 'lines'
     paths = []
